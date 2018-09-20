@@ -13,7 +13,15 @@ class Auth extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() {  
+    this.getUser();
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      user: undefined
+    });
+
     this.getUser();
   }
 

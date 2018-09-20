@@ -19,7 +19,7 @@ class Profile extends Component {
             })
         }
     }
-    
+
     logout(event){
         localStorage.removeItem(Config.tokenName);
         this.props.history.push('/');
