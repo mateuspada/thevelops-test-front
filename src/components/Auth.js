@@ -59,9 +59,36 @@ class Auth extends Component {
       this.props.history.push('/');
     }
 
-    console.log(this.props);
     this.props.location.state = {user};
-    return this.props.children;
+
+    let index = 0;
+
+    this.props.children.forEach((element, iChild) => {
+      let pathChild = element.props.path.split('/');
+      let pathCall = this.props.location.pathname.split('/');
+      let match = 0;
+      if (pathChild.length === pathCall.length){
+        pathChild.forEach((e, i )=>{
+          if (e.indexOf(':') >= 0){
+            match++;
+            return;
+          }
+
+          if (e === pathCall[i]){
+            match++;
+            return;
+          }
+
+        }); 
+      }
+
+      if (match === pathChild.length) {
+        index = iChild;
+      }
+    });
+  
+
+    return this.props.children[index];
   }
 }
 

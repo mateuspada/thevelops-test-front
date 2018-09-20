@@ -11,11 +11,10 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={Login} />    
-            <Route path="/user/:id/edit" component={ProfileEdit} />
 
             <Auth>
                 <Route path="/user/:id" component={Profile} />        
-                
+                <Route path="/user/:id/edit" component={ProfileEdit} />
             </Auth>                         
         </Switch>                      
     </BrowserRouter>
