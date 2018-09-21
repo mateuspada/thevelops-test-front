@@ -7,7 +7,7 @@ All the components that I create are inside the /src/components folder. I used r
 
 Start the API (thevelops-test-back) before run this project.
 
-To start the project, just use the NPM command - npm start.
+To run, you can just download the dependencies with NPM - npm install - and start the server - npm start.
 
 I decided to use JWT, and I'm storing it in the local browser storage.
 
