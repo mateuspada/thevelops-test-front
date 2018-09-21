@@ -28,6 +28,10 @@ class Profile extends Component {
     editUser(event){
         this.props.history.push('/user/'+this.state.user._id+'/edit');
     }
+
+    editPassword(event){
+        this.props.history.push('/user/'+this.state.user._id+'/edit_password');    
+    }
     
     render() {
         return (
@@ -75,7 +79,7 @@ class Profile extends Component {
             
             <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.editUser(event)}>Edit User</Button></Col>
             <Row />
-            <Col s={6} offset="s3"><Button style={btnStyle} waves='light'>Edit Password</Button></Col>
+            <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.editPassword(event)}>Edit Password</Button></Col>
             <Row />
             <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.logout(event)}>Logout</Button></Col>
             </Row>

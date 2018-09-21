@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Input, Container, Button } from 'react-materialize';
-import Axios from 'axios';
+import axios from 'axios';
 import { Config } from '../Config';
 import { btnStyle } from './Style';
 
@@ -30,7 +30,7 @@ class Login extends Component {
         
         let self = this;
         
-        Axios.post(apiBaseUrl+'login', user)
+        axios.post(apiBaseUrl+'login', user)
         .then((res) => {
             if(res.status === 200){
                 localStorage.setItem(Config.tokenName, res.data.token);
@@ -52,6 +52,10 @@ class Login extends Component {
                 });
             }
         });
+    }
+
+    signup(event){
+        this.props.history.push('/signup');
     }
     
     render() {
@@ -79,7 +83,7 @@ class Login extends Component {
             </Col>
             <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.login(event)}>Login</Button></Col>    
             <Row></Row>            
-            <Col s={6} offset="s3"><Button style={btnStyle} waves='light'>Sign Up</Button></Col>
+            <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.signup(event)}>Sign Up</Button></Col>
             </Row>
             <Row>
             <Col s={6} offset="s3"><blockquote className="center-align">{this.state.error && this.state.message}</blockquote></Col>            

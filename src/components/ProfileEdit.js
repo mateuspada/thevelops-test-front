@@ -57,6 +57,25 @@ class ProfileEdit extends Component {
             console.log(err);
         });
     }
+
+    deleteUser(event){
+        let apiBaseUrl = Config.urlApi;
+        
+        let self = this;
+        
+        let jwt = getJwt();
+
+        axios.delete(apiBaseUrl + 'users/' + this.props.match.params.id, { headers: { "Authorization": jwt }} )
+        .then((res) => {
+            if(res.status === 204){    
+                localStorage.removeItem(Config.tokenName);            
+                self.props.history.push('/');
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    }
     
     render() {
         return (
@@ -104,7 +123,7 @@ class ProfileEdit extends Component {
             
             <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.editUser(event)}>Submit</Button></Col>
             <Row />
-            <Col s={6} offset="s3"><Button style={btnStyle} waves='light'>Delete User</Button></Col>            
+            <Col s={6} offset="s3"><Button style={btnStyle} waves='light' onClick={(event) => this.deleteUser(event)}>Delete User</Button></Col>            
             </Row>
             </Container>            
             );
